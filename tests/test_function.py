@@ -1,4 +1,4 @@
-from pyproj import function
+from opsys import function
 
 
 def test_function():
