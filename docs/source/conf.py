@@ -1,4 +1,4 @@
-project = "PyProj"
+project = "OpSys"
 copyright = "2026, Dennis Beermann"
 author = "Dennis Beermann"
 release = "0.1.0"

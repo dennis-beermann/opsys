@@ -48,7 +48,7 @@ warn_unused_configs = true
 testpaths = ["tests"]
 addopts = """
 -ra
---cov=pyproj
+--cov=opsys
 --cov-report=term-missing
 --cov-report=html:.artifacts/pytest-cov/coverage-html
 --html=.artifacts/pytest/pytest-report.html
@@ -57,7 +57,7 @@ addopts = """
 cache_dir = ".cache/pytest"
 
 [tool.coverage.run]
-source = ["src/pyproj"]
+source = ["src/opsys"]
 data_file = ".cache/pytest-cov/.coverage"
 
 [tool.coverage.report]

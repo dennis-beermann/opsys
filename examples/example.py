@@ -1,3 +1,3 @@
-from pyproj import function
+from opsys import function
 
 print(function("Hello world!"))
