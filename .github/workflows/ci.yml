@@ -1,0 +1,75 @@
+name: CI
+
+on:
+  push:
+    branches: [ '**' ]
+
+permissions:
+  contents: read
+
+# ----------------- #
+# CI Python version #
+# ----------------- #
+# In the GitHub CI pipeline, all jobs are run for each Python version located in
+# the repo variable named CI_PYTHON_VERSIONS. Edit this in GitHub under
+# Settings -> Secrets and Variables -> Variables (Tab) -> Repository variables
+#   CI_PYTHON_VERSIONS = ["3.12", "3.13"]
+
+jobs:
+  lint:
+    name: Lint & Format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+      - name: Ruff
+        run: |
+          uv run ruff check .
+          uv run ruff format --check .
+
+  typecheck:
+    name: Typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v7
+      - name: Pyright
+        run: uv run pyright .
+
+  test:
+    name: Test (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ${{ fromJSON(vars.CI_PYTHON_VERSIONS) }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install
+        run: uv sync --frozen
+      - name: Pytest
+        run: |
+          mkdir -p test-reports
+          uv run pytest --html=test-reports/report.html --self-contained-html --junitxml=test-reports/junit.xml
+      - name: Upload Test Artifacts
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: test-results-python-${{ matrix.python-version }}
+          path: test-reports/
+          if-no-files-found: error
+
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v7
+      - name: Install
+        run: uv sync --frozen
+      - name: Sphinx build
+        run: uv run sphinx-build -b html -W --keep-going docs/source docs/build/html

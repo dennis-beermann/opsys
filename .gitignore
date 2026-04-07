@@ -1,0 +1,5 @@
+.cache/*
+.artifacts/*
+.venv
+__pycache__
+docs/build/

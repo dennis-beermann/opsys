@@ -1,0 +1,11 @@
+project = "PyProj"
+copyright = "2026, Dennis Beermann"
+author = "Dennis Beermann"
+release = "0.1.0"
+extensions: list[str] = ["myst_parser", "sphinx_rtd_theme"]
+templates_path: list[str] = ["_templates"]
+exclude_patterns: list[str] = []
+root_doc = "index"
+html_theme = "sphinx_rtd_theme"
+html_theme_options = {"navigation_depth": 3}
+html_static_path = []

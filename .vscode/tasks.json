@@ -1,0 +1,52 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "pyright",
+            "type": "shell",
+            "command": "uv",
+            "args": ["run", "pyright", "."],
+            "group": { "kind": "build" }
+        },
+
+        {
+            "label": "ruff format",
+            "type": "shell",
+            "command": "uv",
+            "args": ["run", "ruff", "format", "--check", "."],
+            "group": { "kind": "build" }
+        },
+
+        {
+            "label": "ruff check",
+            "type": "shell",
+            "command": "uv",
+            "args": ["run", "ruff", "check", "."],
+            "group": { "kind": "build" }
+        },
+
+        {
+            "label": "pytest",
+            "type": "shell",
+            "command": "uv",
+            "args": ["run", "pytest"],
+            "group": { "kind": "build" }
+        },
+
+        {
+            "label": "docs",
+            "type": "shell",
+            "command": "uv",
+            "args": ["run", "sphinx-build", "-b", "html", "docs/source", "docs/build/html"],
+            "group": { "kind": "build" }
+        },
+
+        {
+            "label": "Run example",
+            "type": "shell",
+            "command": "uv",
+            "args": ["run", "python", "examples/example.py"],
+            "group": { "kind": "test" }
+        }
+    ]
+}
