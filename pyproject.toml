@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "OpSys"
+name = "Frigg"
 version = "0.1.0"
 description = "Your project description"
 readme = "README.md"
@@ -29,8 +29,8 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/dennis-beermann/opsys"
-Repository = "https://github.com/dennis-beermann/opsys"
+Homepage = "https://github.com/dennis-beermann/frigg"
+Repository = "https://github.com/dennis-beermann/frigg"
 
 [tool.ruff]
 src = ["src"]
@@ -48,7 +48,7 @@ warn_unused_configs = true
 testpaths = ["tests"]
 addopts = """
 -ra
---cov=opsys
+--cov=frigg
 --cov-report=term-missing
 --cov-report=html:.artifacts/pytest-cov/coverage-html
 --html=.artifacts/pytest/pytest-report.html
@@ -57,7 +57,7 @@ addopts = """
 cache_dir = ".cache/pytest"
 
 [tool.coverage.run]
-source = ["src/opsys"]
+source = ["src/frigg"]
 data_file = ".cache/pytest-cov/.coverage"
 
 [tool.coverage.report]

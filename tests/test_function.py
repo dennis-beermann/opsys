@@ -1,4 +1,4 @@
-from opsys import function
+from frigg import function
 
 
 def test_function():

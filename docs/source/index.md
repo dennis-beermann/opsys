@@ -1,4 +1,4 @@
-# OpSys documentation
+# Frigg documentation
 
 Lorem ipsum dolor sit amet.
 
