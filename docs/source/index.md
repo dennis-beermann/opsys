@@ -1,4 +1,4 @@
-# PyProj documentation
+# OpSys documentation
 
 Lorem ipsum dolor sit amet.
 
