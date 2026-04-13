@@ -1,7 +1,6 @@
 # Frigg documentation
 
-Lorem ipsum dolor sit amet.
-
+It's friggin' great!
 
 ```{toctree}
 :maxdepth: 2
